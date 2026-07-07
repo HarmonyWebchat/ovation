@@ -18,7 +18,3 @@
   clap = { version = "4.6.1", features = ["cargo", "derive"] }
   either = "1.16.0"
 
-  [dependencies.flux-rs]
-    git = "https://github.com/flux-rs/flux.git"
-    rev = "7c5cbe71b819ff77c81f3e5283dfb5d18f52669c"
-
