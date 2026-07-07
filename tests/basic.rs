@@ -1,4 +1,3 @@
-use anyhow::Result;
 use clap::{Parser, Subcommand};
 use clap::error::ErrorKind;
 use ovation::{CommandContext, CommandDelegate, CommandSet};

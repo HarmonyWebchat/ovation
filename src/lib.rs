@@ -2,7 +2,6 @@
 #![feature(associated_type_defaults)]
 #![doc = include_str!("../README.md")]
 
-use anyhow::Result;
 use clap::{Parser, Subcommand};
 use either::Either;
 
