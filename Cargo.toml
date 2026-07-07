@@ -1,10 +1,16 @@
 [package]
   name = "ovation"
   version = "0.1.0"
-  description = "A library built on top of clap to provide a more generally-applicable command framework"
+  description = "A dispatch layer for clap that statically binds Subcommand variants to typed handler functions"
 
   edition = "2024"
   rust-version = "1.91.1"
+
+  readme = "README.md"
+  homepage = "https://github.com/HarmonyWebchat/ovation"
+  repository = "https://github.com/HarmonyWebchat/ovation"
+  keywords = ["clap", "cli", "dispatch", "delegate", "parser"]
+  categories = ["command-line-utilities", "command-line-interface"]
 
   metadata.flux.enabled = true
 
