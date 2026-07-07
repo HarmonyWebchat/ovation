@@ -1,12 +1,12 @@
-use clap::{Parser, Subcommand};
 use clap::error::ErrorKind;
+use clap::{Parser, Subcommand};
 use ovation::{CommandContext, CommandDelegate, CommandSet};
 
 #[derive(Subcommand)]
 enum TestSet {
     Ping,
-    PassthruA{ value: u8  },
-    PassthruB{ value: f32 },
+    PassthruA { value: u8 },
+    PassthruB { value: f32 },
 }
 
 #[derive(Parser)]
@@ -24,7 +24,7 @@ fn passthru(_: &TestArgs, set: &TestSet) -> Result<String, ()> {
     match set {
         TestSet::PassthruA { value } => Ok(value.to_string()),
         TestSet::PassthruB { value } => Ok(value.to_string()),
-        _ => Err(())
+        _ => Err(()),
     }
 }
 
@@ -80,7 +80,8 @@ macro_rules! assert_terminal {
                     e.kind(),
                     ErrorKind::DisplayHelp | ErrorKind::DisplayVersion
                 )
-        ))
+            )
+        )
     };
 }
 
@@ -115,4 +116,3 @@ fn test_passthru_b() {
     assert_ok!(TestArgs["cargo-test-basic", "passthru-b", "--", "-1"   ] @s if s == "-1");
     assert_ok!(TestArgs["cargo-test-basic", "passthru-b", "--", "42"   ] @s if s == "42");
 }
-
