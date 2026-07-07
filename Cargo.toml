@@ -1,0 +1,19 @@
+[package]
+  name = "ovation"
+  version = "0.1.0"
+  description = "A library built on top of clap to provide a more generally-applicable command framework"
+
+  edition = "2024"
+  rust-version = "1.91.1"
+
+  metadata.flux.enabled = true
+
+[dependencies]
+  clap = { version = "4.6.1", features = ["cargo", "derive"] }
+  anyhow = "1.0.102"
+  either = "1.16.0"
+
+  [dependencies.flux-rs]
+    git = "https://github.com/flux-rs/flux.git"
+    rev = "7c5cbe71b819ff77c81f3e5283dfb5d18f52669c"
+

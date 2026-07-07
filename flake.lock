@@ -1,0 +1,492 @@
+{
+  "nodes": {
+    "build-support": {
+      "flake": false,
+      "locked": {
+        "path": "build-support",
+        "type": "path"
+      },
+      "original": {
+        "path": "build-support",
+        "type": "path"
+      },
+      "parent": [
+        "flux-rs"
+      ]
+    },
+    "compiler": {
+      "flake": false,
+      "locked": {
+        "path": "compiler",
+        "type": "path"
+      },
+      "original": {
+        "path": "compiler",
+        "type": "path"
+      },
+      "parent": [
+        "flux-rs"
+      ]
+    },
+    "flake-module": {
+      "flake": false,
+      "locked": {
+        "path": "flake-module.nix",
+        "type": "path"
+      },
+      "original": {
+        "path": "flake-module.nix",
+        "type": "path"
+      },
+      "parent": [
+        "flux-rs"
+      ]
+    },
+    "flake-parts": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1778716662,
+        "narHash": "sha256-m1Yf0wZ8j1OHjTc2UwHwyQRSnNeSgLJOd7q5Y45hzi4=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "f7c1a2d347e4c52d5fb8d10cb4d94b5884e546fb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_2": {
+      "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib"
+      },
+      "locked": {
+        "lastModified": 1778716662,
+        "narHash": "sha256-m1Yf0wZ8j1OHjTc2UwHwyQRSnNeSgLJOd7q5Y45hzi4=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "f7c1a2d347e4c52d5fb8d10cb4d94b5884e546fb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_3": {
+      "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib_2"
+      },
+      "locked": {
+        "lastModified": 1778716662,
+        "narHash": "sha256-m1Yf0wZ8j1OHjTc2UwHwyQRSnNeSgLJOd7q5Y45hzi4=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "f7c1a2d347e4c52d5fb8d10cb4d94b5884e546fb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_4": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "flux-rs",
+          "toolchain2manifest",
+          "mlib",
+          "nixpkgs-lib"
+        ]
+      },
+      "locked": {
+        "lastModified": 1778716662,
+        "narHash": "sha256-m1Yf0wZ8j1OHjTc2UwHwyQRSnNeSgLJOd7q5Y45hzi4=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "f7c1a2d347e4c52d5fb8d10cb4d94b5884e546fb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flux-rs": {
+      "inputs": {
+        "build-support": "build-support",
+        "compiler": "compiler",
+        "flake-module": "flake-module",
+        "flake-parts": "flake-parts_2",
+        "flux-src": "flux-src",
+        "liquid-fixpoint": "liquid-fixpoint",
+        "mlib": "mlib",
+        "nixpkgs": "nixpkgs",
+        "rust-overlay": "rust-overlay",
+        "toolchain2manifest": "toolchain2manifest"
+      },
+      "locked": {
+        "lastModified": 1780277256,
+        "narHash": "sha256-nrf6P0EyUSJrcDs3lxoKfafVA5YGgtL7aYEi+e+ThSE=",
+        "owner": "MaxTheMooshroom",
+        "repo": "flux-rs.nix",
+        "rev": "b1ccb5ba8f8544f78b8d40a5fd3a24cee812eba8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MaxTheMooshroom",
+        "repo": "flux-rs.nix",
+        "type": "github"
+      }
+    },
+    "flux-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1780258434,
+        "narHash": "sha256-JF9dGFDZlT8VBr88VQWmadevunKwSpWdKyXAuyDSnCc=",
+        "owner": "MaxTheMooshroom",
+        "repo": "flux-rs",
+        "rev": "4fae1479ff4f07e5be5408dc33df7bee8d12cf48",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MaxTheMooshroom",
+        "ref": "flux-bin/get_cargo_path",
+        "repo": "flux-rs",
+        "type": "github"
+      }
+    },
+    "lib": {
+      "flake": false,
+      "locked": {
+        "path": "lib/top-level.nix",
+        "type": "path"
+      },
+      "original": {
+        "path": "lib/top-level.nix",
+        "type": "path"
+      },
+      "parent": [
+        "flux-rs",
+        "mlib"
+      ]
+    },
+    "lib_2": {
+      "flake": false,
+      "locked": {
+        "path": "lib/top-level.nix",
+        "type": "path"
+      },
+      "original": {
+        "path": "lib/top-level.nix",
+        "type": "path"
+      },
+      "parent": [
+        "flux-rs",
+        "toolchain2manifest",
+        "mlib"
+      ]
+    },
+    "lib_3": {
+      "flake": false,
+      "locked": {
+        "path": "lib/top-level.nix",
+        "type": "path"
+      },
+      "original": {
+        "path": "lib/top-level.nix",
+        "type": "path"
+      },
+      "parent": [
+        "mlib"
+      ]
+    },
+    "liquid-fixpoint": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1778676410,
+        "narHash": "sha256-uTKlJVc69bg8VA38p3erl1ICEXILhSvvqbH/EuHkImU=",
+        "owner": "ucsd-progsys",
+        "repo": "liquid-fixpoint",
+        "rev": "1ec005195bc93153b62983004c87632a9a1f8c31",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ucsd-progsys",
+        "repo": "liquid-fixpoint",
+        "rev": "1ec005195bc93153b62983004c87632a9a1f8c31",
+        "type": "github"
+      }
+    },
+    "mlib": {
+      "inputs": {
+        "flake-parts": "flake-parts_3",
+        "lib": "lib"
+      },
+      "locked": {
+        "lastModified": 1780069118,
+        "narHash": "sha256-C7Rnw6vlRyik7vJ4GpfnWUA5iJIrz1R3TW0QCkPD/ss=",
+        "owner": "MaxTheMooshroom",
+        "repo": "mlib.nix",
+        "rev": "43d70c9698d5e3a69eb413cf249c32550f89deb1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MaxTheMooshroom",
+        "repo": "mlib.nix",
+        "type": "github"
+      }
+    },
+    "mlib_2": {
+      "inputs": {
+        "flake-parts": "flake-parts_4",
+        "lib": "lib_2",
+        "nixpkgs-lib": "nixpkgs-lib_3"
+      },
+      "locked": {
+        "lastModified": 1779018734,
+        "narHash": "sha256-KGuW0VSIZlXUxn2YYV17w4t1EX4lHCVuXCB6AzM0Lfc=",
+        "owner": "MaxTheMooshroom",
+        "repo": "mlib.nix",
+        "rev": "5f2f79190cec72b1cb9161b3dccbfe41269bc6be",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MaxTheMooshroom",
+        "repo": "mlib.nix",
+        "type": "github"
+      }
+    },
+    "mlib_3": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "lib": "lib_3"
+      },
+      "locked": {
+        "lastModified": 1780069118,
+        "narHash": "sha256-C7Rnw6vlRyik7vJ4GpfnWUA5iJIrz1R3TW0QCkPD/ss=",
+        "owner": "MaxTheMooshroom",
+        "repo": "mlib.nix",
+        "rev": "43d70c9698d5e3a69eb413cf249c32550f89deb1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MaxTheMooshroom",
+        "repo": "mlib.nix",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1780145889,
+        "narHash": "sha256-md0zn0RnwNvPyASas1yG5YUuwQ4ALA6ucL50l0DvqCo=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "8c50a710ddca43d7a530fb805ad55bde8d0141c5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "26.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-lib": {
+      "locked": {
+        "lastModified": 1777168982,
+        "narHash": "sha256-GOkGPcboWE9BmGCRMLX3worL4EMnsnG8MyKmXNeYuhQ=",
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "rev": "f5901329dade4a6ea039af1433fb087bd9c1fe14",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
+    "nixpkgs-lib_2": {
+      "locked": {
+        "lastModified": 1779589704,
+        "narHash": "sha256-/+BaktM3RbRxi3yoH852My6ewF7IQ72WxFIZ4S2MQYg=",
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "rev": "2db1633d3742103a1eb856f5d479e6a0477ddc42",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
+    "nixpkgs-lib_3": {
+      "locked": {
+        "lastModified": 1778379128,
+        "narHash": "sha256-+yjPmoKsTqe/FQHriXzIfI0ELuEt3+1LXc0BE8nU/Yc=",
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "rev": "e361b0ff94723bc94283566dc2a13a46f07eaf5c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1744536153,
+        "narHash": "sha256-awS2zRgF4uTwrOKwwiJcByDzDOdo3Q1rPZbiHQg/N38=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "18dd725c29603f582cf1900e0d25f9f1063dbf11",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1744536153,
+        "narHash": "sha256-awS2zRgF4uTwrOKwwiJcByDzDOdo3Q1rPZbiHQg/N38=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "18dd725c29603f582cf1900e0d25f9f1063dbf11",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
+        "lastModified": 1780145889,
+        "narHash": "sha256-md0zn0RnwNvPyASas1yG5YUuwQ4ALA6ucL50l0DvqCo=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "8c50a710ddca43d7a530fb805ad55bde8d0141c5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "26.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "flux-rs": "flux-rs",
+        "mlib": "mlib_3",
+        "nixpkgs": "nixpkgs_4"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1777259803,
+        "narHash": "sha256-fIb/EoVu/1U0qVrE6qZCJ2WCfprRpywNIAVzKEACIQc=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "a6cb2224d975e16b5e67de688c6ad306f7203425",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "a6cb2224d975e16b5e67de688c6ad306f7203425",
+        "type": "github"
+      }
+    },
+    "rust-overlay_2": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1777259803,
+        "narHash": "sha256-fIb/EoVu/1U0qVrE6qZCJ2WCfprRpywNIAVzKEACIQc=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "a6cb2224d975e16b5e67de688c6ad306f7203425",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "a6cb2224d975e16b5e67de688c6ad306f7203425",
+        "type": "github"
+      }
+    },
+    "toolchain": {
+      "flake": false,
+      "locked": {
+        "path": "rust-toolchain.toml",
+        "type": "path"
+      },
+      "original": {
+        "path": "rust-toolchain.toml",
+        "type": "path"
+      },
+      "parent": [
+        "flux-rs",
+        "toolchain2manifest"
+      ]
+    },
+    "toolchain2manifest": {
+      "inputs": {
+        "flake-parts": [
+          "flux-rs",
+          "flake-parts"
+        ],
+        "mlib": "mlib_2",
+        "nixpkgs": [
+          "flux-rs",
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay_2",
+        "toolchain": "toolchain"
+      },
+      "locked": {
+        "lastModified": 1779626581,
+        "narHash": "sha256-eYO5lPlug7PHQjd9wAKvo8lWtO7+kR/WEbKMhAZGDR4=",
+        "owner": "MaxTheMooshroom",
+        "repo": "rust-toolchain-to-manifest",
+        "rev": "2cba94dca1710266c21674b4f08196b89321ea5c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MaxTheMooshroom",
+        "ref": "squeeze-bin",
+        "repo": "rust-toolchain-to-manifest",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
