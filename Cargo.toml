@@ -1,6 +1,6 @@
 [package]
   name = "ovation"
-  version = "0.1.0"
+  version = "1.0.0"
   description = "A dispatch layer for clap that statically binds Subcommand variants to typed handler functions"
 
   edition = "2024"
