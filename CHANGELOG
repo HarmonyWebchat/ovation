@@ -1,0 +1,7 @@
+# 2.0.0
+
+These are breaking changes, which is why there was a fast bump to 2.0.
+
+- Moved from using the `either` crate to using a new enum for error types,
+  which flattened from an `Either<Either<_, _>, _>` to a flat `OvationError`.
+- Added a trait bound `Debug` to `CommandSet::ErrorType`

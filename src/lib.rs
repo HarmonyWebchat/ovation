@@ -2,23 +2,13 @@
 #![feature(associated_type_defaults)]
 #![doc = include_str!("../README.md")]
 
+pub mod err;
+
 use clap::{Parser, Subcommand};
-use either::Either;
 
-use std::ffi::OsString;
+use std::{ffi::OsString, fmt::Debug};
 
-pub type CommandReturn<Ctx: CommandContext> = <Ctx::Commands as CommandSet<Ctx>>::ReturnType;
-
-pub type CommandError<Ctx: CommandContext> = <Ctx::Commands as CommandSet<Ctx>>::ErrorType;
-
-pub type CommandResult<Ctx: CommandContext> = Result<CommandReturn<Ctx>, CommandError<Ctx>>;
-
-pub type ClapError = Either<clap::Error, clap::Error>;
-
-pub type MixedError<Ctx: CommandContext> = Either<ClapError, CommandError<Ctx>>;
-
-pub type MixedResult<Ctx: CommandContext> =
-    Result<CommandReturn<Ctx>, Either<ClapError, CommandError<Ctx>>>;
+use err::*;
 
 pub trait CommandDelegate<Ctx: CommandContext>:
     Fn(&Ctx, &Ctx::Commands) -> CommandResult<Ctx>
@@ -60,12 +50,14 @@ where
 ///
 /// impl CommandSet<ExampleCommandArgs> for ExampleSubcommands {
 ///     type ReturnType = u8;
+///     type ErrorType = ();
 /// #    fn dispatch<'a>(&self) -> &'a dyn CommandDelegate<ExampleCommandArgs> { todo!() }
 ///     // ...
 /// }
 ///
 /// impl CommandSet<ExampleCommandArgs2> for ExampleSubcommands {
 ///     type ReturnType = f32;
+///     type ErrorType = ();
 /// #    fn dispatch<'a>(&self) -> &'a dyn CommandDelegate<ExampleCommandArgs2> { todo!() }
 ///     // ...
 /// }
@@ -91,7 +83,15 @@ pub trait CommandSet<Ctx: CommandContext<Commands = Self>>: Subcommand {
     ///
     /// Defaults to `()`.
     type ReturnType = ();
-    type ErrorType = ();
+
+    /// The error type shared by any and all delegates produced by
+    /// [`Self::dispatch()`](CommandSet::dispatch). This type is specific to
+    /// each implementation, and is intended to correspond directly with the
+    /// implementation's wrapping [`Ctx`](CommandContext) type. That is, each
+    /// wrapping [`CommandContext`] can have its own error type.
+    ///
+    /// Defaults to `()`.
+    type ErrorType: Debug = ();
 
     /// [`CommandSet`] is intended to be implemented only on enums, so this
     /// function would be returning a [`CommandDelegate<Ctx>`] corresponding to
@@ -105,35 +105,27 @@ pub trait CommandSet<Ctx: CommandContext<Commands = Self>>: Subcommand {
 }
 
 pub trait CommandContext: Parser {
-    const PREFIX: &'static str = "/";
-
     type Commands: CommandSet<Self>;
 
     fn commands(&self) -> &Self::Commands;
 
-    fn execute_from<I, T>(args: I) -> MixedResult<Self>
+    fn execute_from<I, T>(args: I) -> OvationResult<Self>
     where
         T: Into<OsString> + Clone,
         I: IntoIterator<Item = T>,
     {
-        let this = Self::try_parse_from(args).map_err(split_clap_error)?;
+        let this = Self::try_parse_from(args).map_err(OvationError::from)?;
 
-        this.commands().call_delegate(&this).map_err(Either::Right)
+        this.commands()
+            .call_delegate(&this)
+            .map_err(OvationError::CommandError)
     }
 
-    fn execute() -> MixedResult<Self> {
-        let this = Self::try_parse().map_err(split_clap_error)?;
+    fn execute() -> OvationResult<Self> {
+        let this = Self::try_parse().map_err(OvationError::from)?;
 
-        this.commands().call_delegate(&this).map_err(Either::Right)
-    }
-}
-
-fn split_clap_error<R>(err: clap::Error) -> Either<ClapError, R> {
-    use clap::error::ErrorKind;
-
-    if let ErrorKind::DisplayHelp | ErrorKind::DisplayVersion = err.kind() {
-        Either::Left(Either::Left(err))
-    } else {
-        Either::Left(Either::Right(err))
+        this.commands()
+            .call_delegate(&this)
+            .map_err(OvationError::CommandError)
     }
 }

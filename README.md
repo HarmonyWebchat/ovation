@@ -107,9 +107,6 @@ impl CommandSet<ExampleArgs> for ExampleSet {
 }
 
 impl CommandContext for ExampleArgs {
-    // for "slash-commands" outside of command-line contexts.
-    const PREFIX: &'static str = "/";
-
     type Commands = ExampleSet;
 
     fn commands(&self) -> &ExampleSet {
@@ -117,7 +114,7 @@ impl CommandContext for ExampleArgs {
     }
 }
 
-fn main() -> Result<(), ovation::MixedError<ExampleArgs>> {
+fn main() -> Result<(), ovation::err::OvationError<ExampleArgs>> {
     let result: String = ExampleArgs::execute()?;
     // or
     let result: String = ExampleArgs::execute_from([crate_name!(), "a"])?;

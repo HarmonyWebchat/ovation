@@ -1,6 +1,6 @@
 [package]
   name = "ovation"
-  version = "1.0.0"
+  version = "2.0.0"
   description = "A dispatch layer for clap that statically binds Subcommand variants to typed handler functions"
 
   edition = "2024"
@@ -15,5 +15,4 @@
 
 [dependencies]
   clap = { version = "4.6.1", features = ["cargo", "derive"] }
-  either = "1.16.0"
 
