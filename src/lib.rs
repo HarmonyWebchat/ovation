@@ -104,6 +104,12 @@ pub trait CommandSet<Ctx: CommandContext<Commands = Self>>: Subcommand {
     }
 }
 
+fn context_from<Ctx: CommandContext>(result: Result<Ctx, clap::Error>) -> OvationResult<Ctx> {
+    let ctx = result.map_err(OvationError::from)?;
+
+    ctx.commands().call_delegate(&ctx).map_err(OvationError::CommandError)
+}
+
 pub trait CommandContext: Parser {
     type Commands: CommandSet<Self>;
 
@@ -114,18 +120,10 @@ pub trait CommandContext: Parser {
         T: Into<OsString> + Clone,
         I: IntoIterator<Item = T>,
     {
-        let this = Self::try_parse_from(args).map_err(OvationError::from)?;
-
-        this.commands()
-            .call_delegate(&this)
-            .map_err(OvationError::CommandError)
+        context_from(Self::try_parse_from(args))
     }
 
     fn execute() -> OvationResult<Self> {
-        let this = Self::try_parse().map_err(OvationError::from)?;
-
-        this.commands()
-            .call_delegate(&this)
-            .map_err(OvationError::CommandError)
+        context_from(Self::try_parse())
     }
 }
