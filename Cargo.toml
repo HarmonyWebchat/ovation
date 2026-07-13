@@ -15,4 +15,11 @@
 
 [dependencies]
   clap = { version = "4.6.1", features = ["cargo", "derive"] }
+  ovation-derive.workspace = true
+
+[workspace]
+  members = [ "./ovation-derive" ]
+
+  [workspace.dependencies]
+    ovation-derive.path = "./ovation-derive"
 

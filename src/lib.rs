@@ -5,6 +5,7 @@
 pub mod err;
 
 use clap::{Parser, Subcommand};
+pub use ovation_derive::{CommandContext, CommandSet};
 
 use std::{ffi::OsString, fmt::Debug};
 
