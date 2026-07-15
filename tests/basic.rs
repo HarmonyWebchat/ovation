@@ -2,6 +2,9 @@ use clap::{Parser, Subcommand};
 use ovation::err::OvationError;
 use ovation::{CommandContext, CommandDelegate, CommandSet};
 
+#[macro_use]
+mod helpers;
+
 #[derive(Subcommand)]
 enum TestSet {
     Ping,
@@ -48,51 +51,6 @@ impl CommandContext for TestArgs {
     fn commands(&self) -> &Self::Commands {
         &self.subcommands
     }
-}
-
-// === HELPERS ===
-
-macro_rules! assert_ok {
-    ( $ctx:ident [ $( $args:literal ),+ ] if $bind:ident @ ( $guard:expr ) ) => {
-        assert!(matches!( $ctx::execute_from([ $( $args ),* ]), Ok($bind) if $guard ))
-    };
-
-    ( $ctx:ident [ $( $args:literal ),+ ] ) => {
-        assert!( $ctx::execute_from([ $( $args ),* ]).is_ok())
-    };
-}
-
-macro_rules! assert_clap_err {
-    ( $ctx:ident [ $( $args:literal ),+ ] ) => {
-        assert!(
-            matches!(
-                $ctx::execute_from([ $( $args ),* ]),
-                Err(OvationError::ClapError(_))
-            )
-        )
-    };
-}
-
-macro_rules! assert_terminal {
-    ( $ctx:ident [ $( $args:literal ),+ ] ) => {
-        assert!(
-            matches!(
-                $ctx::execute_from([ $( $args ),* ]),
-                Err(OvationError::ClapTerminal(_))
-            )
-        )
-    };
-}
-
-macro_rules! assert_command_err {
-    ( $ctx:ident [ $( $args:literal ),+ ] ) => {
-        assert!(
-            matches!(
-                $ctx::execute_from([ $( $args ),* ]),
-                Err(OvationError::CommandError(_))
-            )
-        )
-    };
 }
 
 // === INTERNAL COHERENCE TESTS ===
